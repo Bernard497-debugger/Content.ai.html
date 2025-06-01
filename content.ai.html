@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Khali Content Creator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #121212;
+      color: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #00ffcc;
+    }
+    select, button {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 16px;
+    }
+    select {
+      background: #1e1e1e;
+      color: #f0f0f0;
+    }
+    button {
+      background: #00ffcc;
+      color: #000;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #00ccaa;
+    }
+    .output {
+      background: #1e1e1e;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      min-height: 100px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Khali Content Creator</h1>
+  <p>Select content type and auto-generate powerful posts.</p>
+
+  <select id="contentType">
+    <option value="ad">Ad Post</option>
+    <option value="caption">Instagram Caption</option>
+    <option value="bio">Bio/About Me</option>
+    <option value="quote">Motivational Quote</option>
+  </select>
+  <br>
+  <button onclick="generateContent()">Generate</button>
+  <button onclick="copyContent()">Copy</button>
+
+  <div class="output" id="output"></div>
+
+  <script>
+    const templates = {
+      ad: [
+        "🚀 Launch your brand with <b>Khali Hub</b>. Apps, websites, and more. #BernardKhalifa",
+        "🔥 Want growth? Get a custom app or site with me. Affordable. Powerful. Smart.",
+        "💼 Professional services. Real results. DM me to level up your business today!"
+      ],
+      caption: [
+        "Built different. Dream louder. #BKStyle",
+        "Success isn’t optional — it’s my baseline. 🔥",
+        "Turning code into cash, one project at a time 💻💰"
+      ],
+      bio: [
+        "Developer. Designer. Hustler. I build digital empires from scratch.",
+        "Botsile aka Bernard Khalifa — your plug for smart apps & viral sites.",
+        "Helping Africa go digital, one line of code at a time."
+      ],
+      quote: [
+        "“Don’t wait for opportunity. Create it — then automate it.”",
+        "“A single app can change your life — or someone else’s.”",
+        "“You were born to build more than followers. Build impact.”"
+      ]
+    };
+
+    function generateContent() {
+      const type = document.getElementById("contentType").value;
+      const options = templates[type];
+      const random = options[Math.floor(Math.random() * options.length)];
+      document.getElementById("output").innerHTML = random;
+    }
+
+    function copyContent() {
+      const content = document.getElementById("output").innerText;
+      navigator.clipboard.writeText(content).then(() => {
+        alert("Copied to clipboard!");
+      });
+    }
+  </script>
+
+</body>
+</html>
